@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Five-Word Chain</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Five-Word Chain</h1>
+      <div class="hud">
+        <span id="timer">00:00</span>
+        <button id="newBtn">New Puzzle</button>
+      </div>
+    </header>
+
+    <!-- The chain: 5 hidden 5-letter words laid out horizontally -->
+    <section id="chain" class="chain" aria-label="Word chain">
+      <!-- JS will populate five .word groups, each with 5 .tile children -->
+    </section>
+
+    <p id="status" aria-live="polite" class="status"></p>
+  </main>
+
+  <!-- Win dialog -->
+  <dialog id="winDialog">
+    <h2>🎉 You solved it!</h2>
+    <p id="summary"></p>
+    <form method="dialog"><button>Close</button></form>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
