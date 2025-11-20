@@ -27,12 +27,22 @@ button:disabled{ opacity:.6; cursor:not-allowed }
 }
 
 .word{
-  background:#151515; border:1px solid var(--grid); border-radius:12px;
-  padding:10px; display:grid; gap:8px;
-  grid-template-columns: repeat(5, 48px); /* tile width */
-  justify-content:center; min-height:84px; position:relative;
-  overflow:hidden;
+  background:#151515;
+  border:1px solid var(--grid);
+  border-radius:12px;
+  padding:10px;
+  display:grid;
+  gap:8px;
+
+  /* Let the 5 tiles share the available width */
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  justify-content:stretch;
+
+  min-height:72px;
+  position:relative;
+  overflow:visible; /* important: don't clip tiles */
 }
+
 .word.slide-left{ animation: slideLeft .35s ease both }
 @keyframes slideLeft{
   from{ transform:translateX(0) } to{ transform:translateX(-8px); opacity:0.98 }
