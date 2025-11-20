@@ -1,0 +1,69 @@
+:root{
+  --bg:#111; --panel:#1a1a1a; --tile:#232323; --grid:#2c2c2c;
+  --text:#fff; --muted:#bdbdbd; --green:#2e7d32; --blue:#3577ff; --warn:#b3403b;
+}
+*{ box-sizing:border-box }
+html,body{ height:100% }
+body{
+  margin:0; background:var(--bg); color:var(--text);
+  font:16px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  display:grid; place-items:center;
+}
+main{ width:min(980px,94vw); padding:20px; display:grid; gap:16px }
+
+header{ display:flex; align-items:center; justify-content:space-between }
+h1{ margin:0; font-size:22px }
+.hud{ display:flex; gap:10px; align-items:center }
+#timer{ font-variant-numeric:tabular-nums; opacity:.9 }
+button{
+  background:var(--blue); color:#fff; border:0; border-radius:10px;
+  padding:10px 14px; font-weight:700; cursor:pointer;
+}
+button:disabled{ opacity:.6; cursor:not-allowed }
+
+.chain{
+  background:var(--panel); border-radius:14px; padding:16px;
+  display:grid; gap:14px; grid-template-columns: repeat(5, 1fr);
+}
+
+.word{
+  background:#151515; border:1px solid var(--grid); border-radius:12px;
+  padding:10px; display:grid; gap:8px;
+  grid-template-columns: repeat(5, 48px); /* tile width */
+  justify-content:center; min-height:84px; position:relative;
+  overflow:hidden;
+}
+.word.slide-left{ animation: slideLeft .35s ease both }
+@keyframes slideLeft{
+  from{ transform:translateX(0) } to{ transform:translateX(-8px); opacity:0.98 }
+}
+
+.tile{
+  height:48px; width:48px; display:grid; place-items:center;
+  background:var(--tile); border:2px solid var(--grid); border-radius:10px;
+  font-weight:800; font-size:20px; letter-spacing:1px; text-transform:uppercase;
+}
+.tile.green{ background:var(--green) }
+.tile.blue{ background:#1c2b50; border-color:#2b3d6c; color:#dce7ff }
+.tile.hint{ background:var(--green) } /* first-letter hint */
+.tile.hidden{ opacity:.25 } /* unused tiles */
+.shake{ animation:shake .25s ease }
+@keyframes shake{
+  10%{ transform:translateX(-4px) }
+  30%{ transform:translateX(4px) }
+  50%{ transform:translateX(-3px) }
+  70%{ transform:translateX(3px) }
+  90%{ transform:translateX(-2px) }
+  100%{ transform:translateX(0) }
+}
+
+.status{ min-height:1.2em; color:var(--muted); text-align:center }
+dialog{
+  border:0; padding:20px; border-radius:14px; background:#202020; color:var(--text)
+}
+
+/* Responsive: shrink tiles a bit on small screens */
+@media (max-width: 640px){
+  .word{ grid-template-columns: repeat(5, 42px) }
+  .tile{ width:42px; height:42px; font-size:18px }
+}
