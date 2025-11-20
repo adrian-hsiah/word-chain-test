@@ -49,10 +49,22 @@ button:disabled{ opacity:.6; cursor:not-allowed }
 }
 
 .tile{
-  height:48px; width:48px; display:grid; place-items:center;
-  background:var(--tile); border:2px solid var(--grid); border-radius:10px;
-  font-weight:800; font-size:20px; letter-spacing:1px; text-transform:uppercase;
+  /* remove fixed width/height if you have them */
+  /* width:48px; height:48px; */
+
+  width:100%;
+  aspect-ratio:1/1;          /* keeps them square */
+  display:grid;
+  place-items:center;
+  background:var(--tile);
+  border:2px solid var(--grid);
+  border-radius:10px;
+  font-weight:800;
+  font-size:20px;
+  letter-spacing:1px;
+  text-transform:uppercase;
 }
+
 .tile.green{ background:var(--green) }
 .tile.blue{ background:#1c2b50; border-color:#2b3d6c; color:#dce7ff }
 .tile.hint{ background:var(--green) } /* first-letter hint */
